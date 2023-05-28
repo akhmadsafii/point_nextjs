@@ -8,8 +8,6 @@ const Sidebar = () => {
     const router = useRouter();
 
     const handleSignOut = () => {
-        console.log("keluar");
-        // Hapus token atau informasi autentikasi yang tersimpan
         localStorage.removeItem('token');
 
         // Mengarahkan pengguna ke halaman login
@@ -48,7 +46,7 @@ const Sidebar = () => {
                                     <div className="menu-item px-3">
                                         <div className="menu-content d-flex align-items-center px-3">
                                             <div className="symbol symbol-50px me-5">
-                                                <img alt="Logo" src="assets/media/avatars/150-26.jpg" />
+                                                <img alt="Logo" src="assets/media/150-26.jpg" />
                                             </div>
                                             <div className="d-flex flex-column">
                                                 <div className="fw-bolder d-flex align-items-center fs-5">Max Smith
@@ -68,7 +66,7 @@ const Sidebar = () => {
                                         <a href="../../demo8/dist/account/settings.html" className="menu-link px-5">Account Settings</a>
                                     </div>
                                     <div className="menu-item px-5">
-                                        <a className="menu-link px-5" onClick={handleSignOut}>Sign Out</a>
+                                        <a href='#' className="menu-link px-5" onClick={handleSignOut}>Sign Out</a>
                                     </div>
                                 </div>
                             </div>

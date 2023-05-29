@@ -16,34 +16,22 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $admins = [
-            [
-                'id' => Uuid::uuid4()->toString(),
-                'slug' => 'admin-1',
-                'name' => 'Admin 1',
-                'email' => 'admin1@example.com',
-                'gender' => 'm',
-                'phone' => '123456789',
-                'address' => '123 Main Street',
-                'file' => 'admin1.jpg',
-                'password' => Hash::make('password1'),
-            ],
-            [
-                'id' => Uuid::uuid4()->toString(),
-                'slug' => 'admin-2',
-                'name' => 'Admin 2',
-                'email' => 'admin2@example.com',
-                'gender' => 'f',
-                'phone' => '987654321',
-                'address' => '456 Oak Avenue',
-                'file' => 'admin2.jpg',
-                'password' => Hash::make('password2'),
-            ],
-            // Tambahkan data admin lainnya di sini
-        ];
+        $admins = [];
 
-        foreach ($admins as $admin) {
-            DB::table('admins')->insert($admin);
+        for ($i = 1; $i <= 500; $i++) {
+            $admins[] = [
+                'id' => Uuid::uuid4()->toString(),
+                'slug' => 'admin-' . $i,
+                'name' => 'Admin ' . $i,
+                'email' => 'admin' . $i . '@example.com',
+                'gender' => $i % 2 === 0 ? 'f' : 'm',
+                'phone' => '123456789',
+                'address' => $i % 2 === 0 ? '456 Oak Avenue' : '123 Main Street',
+                'file' => 'admin' . $i . '.jpg',
+                'password' => Hash::make('password' . $i),
+            ];
         }
+
+        DB::table('admins')->insert($admins);
     }
 }

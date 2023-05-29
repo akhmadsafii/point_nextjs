@@ -83,7 +83,7 @@ const Sidebar = () => {
                             </div>
                         </div>
                         <div className="menu-item">
-                            <a className="menu-link" href="../../demo8/dist/index.html">
+                            <a className="menu-link" href="/dashboard">
                                 <span className="menu-icon">
                                     <span className="svg-icon svg-icon-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -94,7 +94,7 @@ const Sidebar = () => {
                                         </svg>
                                     </span>
                                 </span>
-                                <span className="menu-title">Default</span>
+                                <span className="menu-title">Dashboard</span>
                             </a>
                         </div>
                         <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
@@ -113,7 +113,7 @@ const Sidebar = () => {
                             </span>
                             <div className="menu-sub menu-sub-accordion menu-active-bg">
                                 <div className="menu-item">
-                                    <a className="menu-link" href="../../demo8/dist/account/overview.html">
+                                    <a className="menu-link" href="/admins">
                                         <span className="menu-bullet">
                                             <span className="bullet bullet-dot"></span>
                                         </span>

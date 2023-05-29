@@ -22,7 +22,6 @@ const FormAdmin = ({ onSubmit }) => {
 
     return (
         <div className="card mb-5 mb-xl-10">
-            {/* begin::Card header */}
             <div
                 className="card-header border-0 cursor-pointer"
                 role="button"

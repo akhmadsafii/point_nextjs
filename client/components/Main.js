@@ -52,8 +52,8 @@ const Main = ({ children, title }) => {
                 />
             </Head>
             {children}
-            <script src="assets/js/plugins.bundle.js"></script>
-            <script src="assets/js/scripts.bundle.js"></script>
+            <script src="/assets/js/plugins.bundle.js"></script>
+            <script src="/assets/js/scripts.bundle.js"></script>
         </div>
     );
 };

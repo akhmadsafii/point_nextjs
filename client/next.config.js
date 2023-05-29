@@ -1,21 +1,22 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const express = require('express');
 const app = express();
+const URL_BACKEND = `${process.env.NEXT_BACKEND_URL}`;
 
 module.exports = {
   async rewrites() {
     return [
       {
         source: '/assets/css/:path*',
-        destination: 'http://127.0.0.1:8000/assets/css/:path*',
+        destination: `${URL_BACKEND}/assets/css/:path*`,
       },
       {
         source: '/assets/js/:path*',
-        destination: 'http://127.0.0.1:8000/assets/js/:path*',
+        destination: `${URL_BACKEND}/assets/js/:path*`,
       },
       {
         source: '/assets/media/:path*',
-        destination: 'http://127.0.0.1:8000/assets/media/:path*',
+        destination: `${URL_BACKEND}/assets/media/:path*`,
       },
     ];
   },
@@ -23,21 +24,21 @@ module.exports = {
     app.use(
       '/assets/css',
       createProxyMiddleware({
-        target: 'http://localhost:8000',
+        target: `${URL_BACKEND}`,
         changeOrigin: true,
       })
     );
     app.use(
       '/assets/js',
       createProxyMiddleware({
-        target: 'http://localhost:8000',
+        target: `${URL_BACKEND}`,
         changeOrigin: true,
       })
     );
     app.use(
       '/assets/media',
       createProxyMiddleware({
-        target: 'http://localhost:8000',
+        target: `${URL_BACKEND}`,
         changeOrigin: true,
       })
     );

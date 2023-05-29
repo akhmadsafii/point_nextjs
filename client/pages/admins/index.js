@@ -5,7 +5,13 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import checkAuth from "../../utils/auth";
-import { getAdmins, createAdmin, updateAdmin, deleteAdmin } from "../api/admins";
+import Link from "next/link";
+import {
+    getAdmins,
+    createAdmin,
+    updateAdmin,
+    deleteAdmin,
+} from "../api/admins";
 // import FormAdmin from "../../components/Admin/FormAdmin";
 
 const Admin = () => {
@@ -37,7 +43,6 @@ const Admin = () => {
                 search,
                 page: currentPage,
             });
-            console.log(response);
             setAdmins(response.data);
             setTotalPages(response.last_page);
         } catch (error) {
@@ -88,15 +93,21 @@ const Admin = () => {
         setCurrentPage(page);
         fetchAdmins();
     };
-    const startPage = Math.max(1, currentPage - 2);
-    const endPage = Math.min(totalPages, currentPage + 2);
+
+    const handleEditClick = (adminId) => {
+        // console.log(adminId);
+        localStorage.setItem('adminId', adminId);
+        // console.log(localStorage.getItem("adminId"));
+        router.push('/admins/form');
+      };
+    // const startPage = Math.max(1, currentPage - 2);
+    // const endPage = Math.min(totalPages, currentPage + 2);
 
     return (
         <Layout>
             <div className="card">
                 <div className="card-header border-0 pt-6">
                     <div className="card-title">
-                        {/* begin::Search */}
                         <div className="d-flex align-items-center position-relative my-1">
                             <span className="svg-icon svg-icon-1 position-absolute ms-6">
                                 <svg
@@ -132,18 +143,13 @@ const Admin = () => {
                         </div>
                     </div>
                     <div className="card-toolbar">
-                        {/* begin::Toolbar */}
                         <div
                             className="d-flex justify-content-end"
                             data-kt-customer-table-toolbar="base"
                         >
-                            {/* begin::Filter */}
-
                             <button
                                 type="button"
                                 className="btn btn-light-primary me-3"
-                                data-bs-toggle="modal"
-                                data-bs-target="#kt_customers_export_modal"
                             >
                                 {/* begin::Svg Icon | path: icons/duotune/arrows/arr078.svg */}
                                 <span className="svg-icon svg-icon-2">
@@ -176,9 +182,14 @@ const Admin = () => {
                                 </span>
                                 {/* end::Svg Icon */}Export
                             </button>
-                            <button className="btn btn-primary">
-                                Tambah Admin
-                            </button>
+                            <Link href="/admins/form" passHref>
+                                <button
+                                    type="button"
+                                    className="btn btn-light-primary"
+                                >
+                                    Tambah Admin
+                                </button>
+                            </Link>
                         </div>
                         <div
                             className="d-flex justify-content-end align-items-center d-none"
@@ -265,9 +276,9 @@ const Admin = () => {
                                                     aria-labelledby="actionsDropdown"
                                                 >
                                                     <li>
-                                                        <a
+                                                        <a href="#"
+                                                            onClick={() => handleEditClick(admin.id)}
                                                             className="dropdown-item"
-                                                            href="../../demo8/dist/apps/customers/view.html"
                                                         >
                                                             Edit
                                                         </a>
@@ -278,7 +289,10 @@ const Admin = () => {
                                                             href="#"
                                                             onClick={(e) => {
                                                                 e.preventDefault();
-                                                                handleDeleteAdmin(admin.id, e);
+                                                                handleDeleteAdmin(
+                                                                    admin.id,
+                                                                    e
+                                                                );
                                                             }}
                                                         >
                                                             Delete

@@ -29,12 +29,20 @@ export const getAdmins = async ({ perPage, search, page }) => {
 
 // Membuat produk baru
 export const createAdmin = (adminData) => {
+    console.log('proses create');
     return axios.post(`${API_URL}/admins`, adminData);
 };
 
 // Memperbarui produk berdasarkan ID
 export const updateAdmin = (adminId, adminData) => {
+    console.log('proses update');
     return axios.put(`${API_URL}/admins/${adminId}`, adminData);
+};
+
+// Mendapatkan produk berdasarkan ID
+export const getAdminId = (adminId) => {
+    console.log(adminId);
+    return axios.get(`${API_URL}/admins/${adminId}`);
 };
 
 // Menghapus produk berdasarkan ID

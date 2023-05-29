@@ -23,7 +23,7 @@ const Sidebar = () => {
             <div className="aside-toolbar flex-column-auto" id="kt_aside_toolbar">
                 <div className="aside-user d-flex align-items-sm-center justify-content-center py-5">
                     <div className="symbol symbol-50px">
-                        <img src="assets/media/150-26.jpg" alt="" />
+                        <img src="/assets/media/150-26.jpg" alt="" />
                     </div>
                     <div className="aside-user-info flex-row-fluid flex-wrap ms-5">
                         <div className="d-flex">
@@ -46,7 +46,7 @@ const Sidebar = () => {
                                     <div className="menu-item px-3">
                                         <div className="menu-content d-flex align-items-center px-3">
                                             <div className="symbol symbol-50px me-5">
-                                                <img alt="Logo" src="assets/media/150-26.jpg" />
+                                                <img alt="Logo" src="/assets/media/150-26.jpg" />
                                             </div>
                                             <div className="d-flex flex-column">
                                                 <div className="fw-bolder d-flex align-items-center fs-5">Max Smith
@@ -57,13 +57,13 @@ const Sidebar = () => {
                                     </div>
                                     <div className="separator my-2"></div>
                                     <div className="menu-item px-5">
-                                        <a href="../../demo8/dist/account/overview.html" className="menu-link px-5">My Profile</a>
+                                        <a href="#" className="menu-link px-5">My Profile</a>
                                     </div>
                                     
                                     <div className="separator my-2"></div>
 
                                     <div className="menu-item px-5 my-1">
-                                        <a href="../../demo8/dist/account/settings.html" className="menu-link px-5">Account Settings</a>
+                                        <a href="#" className="menu-link px-5">Account Settings</a>
                                     </div>
                                     <div className="menu-item px-5">
                                         <a href='#' className="menu-link px-5" onClick={handleSignOut}>Sign Out</a>
@@ -100,7 +100,6 @@ const Sidebar = () => {
                         <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
                             <span className="menu-link">
                                 <span className="menu-icon">
-                                    {/*begin::Svg Icon | path: icons/duotune/communication/com006.svg*/}
                                     <span className="svg-icon svg-icon-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <path opacity="0.3" d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 7C10.3 7 9 8.3 9 10C9 11.7 10.3 13 12 13C13.7 13 15 11.7 15 10C15 8.3 13.7 7 12 7Z" fill="black" />
@@ -121,7 +120,7 @@ const Sidebar = () => {
                                     </a>
                                 </div>
                                 <div className="menu-item">
-                                    <a className="menu-link" href="../../demo8/dist/account/settings.html">
+                                    <a className="menu-link" href="#">
                                         <span className="menu-bullet">
                                             <span className="bullet bullet-dot"></span>
                                         </span>
@@ -129,7 +128,7 @@ const Sidebar = () => {
                                     </a>
                                 </div>
                                 <div className="menu-item">
-                                    <a className="menu-link" href="../../demo8/dist/account/security.html">
+                                    <a className="menu-link" href="#">
                                         <span className="menu-bullet">
                                             <span className="bullet bullet-dot"></span>
                                         </span>
@@ -137,7 +136,7 @@ const Sidebar = () => {
                                     </a>
                                 </div>
                                 <div className="menu-item">
-                                    <a className="menu-link" href="../../demo8/dist/account/billing.html">
+                                    <a className="menu-link" href="#">
                                         <span className="menu-bullet">
                                             <span className="bullet bullet-dot"></span>
                                         </span>
@@ -150,7 +149,7 @@ const Sidebar = () => {
                 </div>
             </div>
             <div className="aside-footer flex-column-auto py-5" id="kt_aside_footer">
-                <a href="../../demo8/dist/documentation/getting-started.html" className="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="200+ in-house components and 3rd-party plugins">
+                <a href="#" className="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-dismiss-="click" title="200+ in-house components and 3rd-party plugins">
                     <span className="btn-label">Docs &amp; Components</span>
                     <span className="svg-icon btn-icon svg-icon-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

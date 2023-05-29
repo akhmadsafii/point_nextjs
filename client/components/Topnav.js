@@ -5,7 +5,7 @@ const Topnav = () => {
             <div className="header-brand">
                 {/*begin::Logo*/}
                 <a href="../../demo8/dist/index.html">
-                    <img alt="Logo" src="assets/media/logo-1-dark.svg" className="h-25px h-lg-25px" />
+                    <img alt="Logo" src="/assets/media/logo-1-dark.svg" className="h-25px h-lg-25px" />
                 </a>
                 {/*end::Logo*/}
                 {/*begin::Aside minimize*/}

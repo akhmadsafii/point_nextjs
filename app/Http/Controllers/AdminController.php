@@ -3,31 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
+use App\Services\AdminService;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    protected $adminService;
+
+    public function __construct(AdminService $adminService)
+    {
+        $this->adminService = $adminService;
+    }
+
     public function index(Request $request)
     {
         $perPage = $request->query('perPage', 10);
         $search = $request->query('search');
 
-        $query = Admin::query();
-
-        // Filter berdasarkan pencarian
-        if ($search) {
-            $query->where('name', 'LIKE', '%' . $search . '%');
-        }
-
-        $admins = $query->paginate($perPage);
-
+        $admins = $this->adminService->admins($perPage, $search);
         return response()->json($admins);
     }
 
     public function store(Request $request)
     {
-        $Admin = Admin::create($request->all());
-        return response()->json($Admin, 201);
+        $admin = $this->adminService->create($request);
+        return response()->json($admin, 201);
     }
 
     public function show(Admin $admin)

@@ -11,31 +11,45 @@ const Form = ({ onSubmit }) => {
         email: "",
         phone: "",
         address: "",
+        password: "",
+        confirm_password: "",
+        file: null,
     });
 
     const [showPassword, setShowPassword] = useState(false);
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const router = useRouter();
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
 
     const toggleShowPassword = () => {
         setShowPassword(!showPassword);
+    };
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setAdminData((prevState) => ({
+            ...prevState,
+            file: file,
+        }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             if (adminData.id) {
-                // Proses update admin
-                const updatedAdmin = await updateAdmin(adminData.id, adminData);
+                const updatedAdmin = await updateAdmin(adminData.id, {
+                    ...adminData,
+                    password: password,
+                    confirm_password: confirmPassword,
+                });
                 console.log("Admin updated:", updatedAdmin);
                 toast.success("Admin berhasil diperbarui");
             } else {
-                // Proses create admin
-                const createdAdmin = await createAdmin(adminData);
+                const createdAdmin = await createAdmin({
+                    ...adminData,
+                    password: password,
+                    confirm_password: confirmPassword,
+                });
                 console.log("Admin created:", createdAdmin);
                 toast.success("Admin berhasil ditambahkan");
             }
@@ -55,6 +69,10 @@ const Form = ({ onSubmit }) => {
         }));
     };
 
+    const handleConfirmPasswordChange = (e) => {
+        setConfirmPassword(e.target.value);
+    };
+
     useEffect(() => {
         const adminId = localStorage.getItem("adminId");
         if (adminId) {
@@ -66,7 +84,7 @@ const Form = ({ onSubmit }) => {
                     console.log(adminData);
                     setAdminData(adminData);
                 } catch (error) {
-                    // console.log("Gagal mengambil data admin:", error);
+                    console.error("Gagal mengambil data admin:", error);
                     toast.error("Gagal mengambil data admin:", error);
                 }
             };
@@ -128,6 +146,7 @@ const Form = ({ onSubmit }) => {
                                                 type="file"
                                                 name="avatar"
                                                 accept=".png, .jpg, .jpeg"
+                                                onChange={handleImageChange}
                                             />
                                             <input
                                                 type="hidden"
@@ -275,7 +294,9 @@ const Form = ({ onSubmit }) => {
                                             className="form-control form-control-lg form-control-solid"
                                             placeholder="Password"
                                             value={password}
-                                            onChange={handlePasswordChange}
+                                            onChange={(e) =>
+                                                setPassword(e.target.value)
+                                            }
                                         />
                                         <span
                                             className="input-group-text"
@@ -292,7 +313,6 @@ const Form = ({ onSubmit }) => {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="row mb-6">
                                 <label className="col-lg-4 col-form-label required fw-bold fs-6">
                                     Confirm Password
@@ -302,6 +322,8 @@ const Form = ({ onSubmit }) => {
                                         type="password"
                                         name="confirm_password"
                                         className="form-control form-control-lg form-control-solid"
+                                        value={confirmPassword}
+                                        onChange={handleConfirmPasswordChange}
                                     />
                                 </div>
                             </div>
